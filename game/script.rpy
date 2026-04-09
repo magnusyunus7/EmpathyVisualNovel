@@ -308,6 +308,8 @@ label merge_point3:
 label choice_4:
     
     menu:
+        "What do you say?"
+
         "That's not true. You're being way too hard on yourself.":
             if not choice_4_done:
                 $ choice_4_done = True
@@ -367,4 +369,232 @@ label choice_4c:
     jump merge_point4
 
 label merge_point4:
+
+    n "You feel an urge to say something. Something helpful. Something with steps."
+    n "Your fingers twitch toward your phone, maybe you could look up something, send him a link, a framework, anything that would make this feel solvable."
+    n "You don't do it. But the urge is there. And sitting with that urge, not acting on it, is harder than you expected."
+    
+    # show gary_warm...
+
+    g "Fred... that sounds genuinely exhausting. Not just the project. All of it. The sleep, the carrying it alone, of course you're struggling."
+
+    # show fred_sad...
+
+    f "I've been telling myself it's fine for so long. Like if I just keep going, keep pushing, eventually it'll sort itself out."
+    n "He exhales slowly."
+    f "But I think I've just been really, really not fine for a while now."
+    n "Saying it out loud seems to cost him something. But it also seems to take a weight with it, small, but real."
+    n "Like the first crack in something that's been sealed too tight for too long."
+        n "There's a silence. Not the heavy kind from before, something rawer."
+    n "Like Fred just set down something he's been carrying with both hands, and his arms are trembling from the relief of it."
+    n "Every instinct you have is telling you to fill this silence."
+    n "To say something warm."
+    n "To make the moment softer."
+    n "To prove you were listening by showing you understood."
+    n "But that impulse, the need to demonstrate that you understand, is actually about you. Not him."
+    n "Behind you, the staff member has moved to the table right next to yours."
+    n "She's wiping it down slowly, deliberately, the universal canteen code for 'we're closing and you should leave.'"
+    n "You have maybe five minutes. Maybe less. The instinct is to use them, to say the thing, give the comfort, make this silence worth something."
+    n "But worth something to who? To Fred? Or to you?"
+
+label choice_5:
+
+    menu:
+        "What do you say?"
+
+        "It'll pass. You always push through.":
+            if not choice_5_done:
+                $ choice_5_done = True
+            jump choice_5a
+
+        "(Say nothing. Let the silence hold.)":
+            if not choice_5_done:
+                $ correct += 1
+                $ choice_5_done = True
+            jump choice_5b
+
+label choice_5a:
+
+    n "You can see it land, the way Fred's face does something complicated in the space of a second. Gratitude and something else."
+    n "'It'll pass' is meant as comfort. But what Fred heard was: this isn't real. It's temporary. It's small. You'll get over it."
+    n "And maybe that's true. Maybe it will pass. But that's not what he needs to hear right now."
+    n "He needs to hear that what he's feeling is allowed to be big. Even if it's temporary. Especially if it's temporary."
+
+    # show fred_distant...
+
+    f "...yeah. I guess."
+    n "He wanted you to stay in the hard part with him. Instead, you showed him the exit. And he took it, because that's what he's been doing all along. Running from the hard part."
+    n "You just made it easier."
+    jump merge_point5
+
+label choice_5b:
+
+    n "You don't say anything."
+    n "Five seconds. Maybe ten. Long enough that you can feel the canteen around you again, the fan, the distant clatter of a staff member stacking cups."
+    n "Fred looks down at his hands. Takes a slow breath. And something shifts, not a smile, not relief, just... a loosening. Like a knot that's been pulled tight for weeks and just got a quarter-turn looser."
+    n "You didn't do anything. That was the point."
+
+    # show fred_opening_up...
+
+    f "...thanks. For not... yeah. Thanks."
+    jump merge_point5
+
+label merge_point5:
+
+    n "You sit with that for a moment."
+    n "The staff member glances at your table. Not rudely. Just a look. You have maybe three minutes now, if that."
+    n "Fred notices too. You can see him register it, the way his eyes flick toward the staff, then back. Something about the external pressure seems to make a decision for him."
+    f "Sorry. I don't mean to dump all of this on you."
+    g "You're not dumping anything. Keep going."
+    n "He looks at you. Then, quietly..."
+    f "I think what scares me most is that I want to confront them about it."
+    f "I really do. But every time I start typing a message, I think about how it might come across."
+    f "What if they think I'm being difficult?"
+    f "What if it makes the dynamic weird for the rest of the project?"
+    f "So I just… delete it. And go back to doing everything myself."
+    n "A short, self-deprecating exhale. Almost a laugh, but not quite."
+    f "It's stupid, right."
+    n "He says it like a statement. Like he's already decided the answer."
+    f "I already tried opening up about it once. To Wei Ling. And that just, it didn't go well. She meant well, but she kind of made me feel like I was making a big deal out of nothing."
+    f "And I thought, okay, maybe I am. Maybe this is just me being dramatic."
+    f "And if I bring it up again, to anyone, they'll think the same thing."
+    n "There it is. The real shape of the fear. It's not about the teammates. It's not even really about the project."
+    n "It's that Fred tried to ask for help once, and the person he asked, however unintentionally, made him feel like the asking was the problem."
+    n "And now every time he thinks about reaching out, he hears Wei Ling's voice underneath his own. 'That sucks bro.' Then nothing."
+    n "One bad experience. That's all it took to teach him that vulnerability doesn't work."
+    
+    # show fred_distant...
+    
+    f "Actually you know what, never mind."
+    f "It's not even... it's fine."
+    n "There it is. The retraction. He's gathering the words back up, putting them away, taping the box shut."
+    n "It's the most honest he's been all evening and he's trying to take it back."
+    n "This is the moment that matters most. Not because of what he said, but because of what happens right now, when he gives you permission to let him off the hook."
+    n "The staff member is literally two tables away now. The canteen is about to close. Part of you wants to take the out, it's late, he's tired, the moment is over, why push it?"
+    n "But that 'why push it' voice? That's the same voice Fred has been hearing every time he thinks about confronting his team. It's the voice that says: don't make it weird. Don't be difficult. Let it go."
+    n "The question is whether you listen to it."
+
+label choice_6:
+
+    menu:
+        "What do you say?"
+
+        "Wait! Don't do that. Don't pack it back up. It's not stupid. I'm right here. Keep going.":
+            if not choice_6_done:
+                $ correct += 1
+                $ choice_6_done = True
+            jump choice_6a
+
+        "Yeah, don't sweat it. We don't have to talk about it if you don't want to.":
+            if not choice_6_done:
+                $ choice_6_done = True
+            jump choice_6b
+
+label choice_6a:
+
+    n "You don't yell it. You don't even raise your voice. You just, don't let him leave. Not physically. But you don't make it easy for him to retreat either."
+    n "There's a difference between pushing someone to open up and refusing to pretend they didn't just open up. You're doing the second one."
+    n "And Fred can feel the difference."
+
+    # show fred_opening_up...
+
+    f "I just hate feeling like the difficult one. Like everyone else is somehow fine and I'm the only one who has a problem."
+    g "You're not the difficult one for having a limit. You're the one who cared enough to keep going when the others checked out."
+    n "Fred stares at you."
+    n "Like that sentence landed in a place it wasn't expected to reach."
+    f "...I hadn't thought of it like that."
+    g "Most people don't, when they're in the middle of it."
+    n "A beat. Quiet, but not uncomfortable. The first quiet of the evening that doesn't feel heavy."
+    jump path_check
+
+label choice_6b:
+
+    n "You let him off the hook. It feels like kindness, giving him an exit, not pushing, respecting his boundary."
+    n "But Fred wasn't asking for permission to stop. He was testing whether you'd still be there if he showed you something ugly."
+    n "And you said: no, put it away. I'll wait until you're presentable again."
+    
+    # show fred_distant...
+    
+    f "...yeah. You're right."
+    n "He agrees. And then goes quiet in that specific way that means the conversation is gently, firmly over."
+    n "You said the gentle thing. But he wasn't asking for gentle. He was asking to not feel stupid for struggling, and you accidentally confirmed that he should."
+    jump path_check
+
+label path_check:
+
+    if correct >= 4 or (correct == 3 and repaired):
+        jump good_ending
+    elif correct >= 3:
+        jump mixed_ending
+    else:
+        jump bad_ending
+
+label good_ending:
+
+    # show fred_relieved...
+
+    n "Fred sits back in his chair. Not fixed. Not solved. But somehow less braced."
+    f "I think I just needed to say it out loud. I've been running all of this through my head on a loop for weeks and it just... it gets louder every time, you know?"
+    f "Saying it to someone makes it feel like an actual problem instead of just this cloud I'm living inside."
+
+    # show gary_warm...
+
+    g "It is an actual problem. A hard one. But an actual, solvable one."
+    f "Yeah."
+    n "He finally picks up his fork. Takes a proper bite of his food. Chews slowly."
+    f "Thanks for actually listening, Gary."
+    f "Like... actually."
+    f "I half expected you to say 'just talk to them bro' and move on."
+    g "I mean... I do think you should talk to them."
+
+    # show fred_relieved
+
+    f "Yeah, yeah. I know."
+    n "And there it is. The real Fred, briefly. The one who laughs easily, who doesn't disappear inside his own head."
+    n "Still tired. Still anxious. But present. Here. With you."
+    g "Do you want to figure out how to approach them? Like actually think it through, what to say, what tone to take, what you're asking for."
+    f "Not tonight, I think. I just want to... I don't know. Sit with it for a bit. But not alone. Not this time."
+    n "He says it like he's discovering something about himself as the words come out."
+    n "Like the idea that he's allowed to sit with a problem without fixing it,  and that he doesn't have to do that alone, is genuinely new to him."
+    n "The staff member is at the table next to yours now. She clears her throat, just barely."
+    n "Fred looks at you. You look at him. Neither of you want to leave. But neither of you needs to, not the way you would have twenty minutes ago."
+    n "Sometimes knowing someone is willing to stay is enough. You don't have to solve the clock."
+    n "The two of you stay at the corner table for another hour. The canteen empties out around you."
+    n "A staff member starts stacking chairs nearby, the universal signal, and you both finally pack up and leave."
+    n "By the end of it, Fred has a plan. A small one, a message to draft, a meeting to propose, a line he's decided he's allowed to draw."
+    n "It's not a solution. Not yet. But it's a beginning."
+    n "And sometimes, that's everything."
+
+    # show fred_relieved at right
+    # show gary_warm at left
+
+    n "Fred gathers his tray. He looks lighter, not fixed, not solved, but lighter. Like something has been set down, even temporarily."
+    f "Seriously. Thank you."
+    g "Anytime. And I mean that. Not just tonight."
+
+    # show fred_relieved...
+
+    f "I know."
+
+    # hide fred...
+    # show gary_warm...
+
+    n "You sit alone for a moment after he leaves. The canteen is almost empty now. The ceiling fan still hums, uselessly."
+    n "You didn't solve his problem. You didn't give him a five-step plan or make his teammates suddenly care."
+    n "You just stayed. And listened. Really listened."
+    n "And it turned out that was exactly what he needed."
+    n "Your phone buzzes. A message from Fred:"
+    n "'hey. i don't feel better exactly. but i feel like i'm allowed to not feel better? if that makes sense. anyway thanks. see you tomorrow.'"
+    n "It makes sense. It makes more sense than anything you could have told him."
+
+    # scene bg_black...
+    # GOOD ENDING BLABLABLA...
+    jump post_game_survey
+
+label mixed_ending:
+
+label bad_ending:
+
+label post_game_survey:
+
     return
