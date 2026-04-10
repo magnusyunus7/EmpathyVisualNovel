@@ -12,6 +12,19 @@ default choice_4_done = False
 default choice_5_done = False
 default choice_6_done = False
 
+label reset_variables:
+
+    $ correct = 0
+    $ repaired = False
+    $ choice_1_done = False
+    $ choice_2_done = False
+    $ choice_3_done = False
+    $ choice_repair_done = False
+    $ choice_4_done = False
+    $ choice_5_done = False
+    $ choice_6_done = False
+    return
+
 label start:
 
     scene bg_cafeteria with fade
@@ -126,7 +139,7 @@ label merge_point1:
 
     n "Four days. You feel that in your gut. You know exactly what that countdown feels like, the specific dread of a deadline sprinting toward you while the work barely moves."
     n "He's not exaggerating. You can see it on him, the dark circles, the way he's sitting like his body is already bracing for impact. Like he's been in survival mode for a while now and simply forgot to stop."
-    f "Have they said anything? Like... do they even know how much you've been carrying?"
+    g "Have they said anything? Like... do they even know how much you've been carrying?"
 
     # show fred_sad
 
@@ -385,7 +398,7 @@ label merge_point4:
     f "But I think I've just been really, really not fine for a while now."
     n "Saying it out loud seems to cost him something. But it also seems to take a weight with it, small, but real."
     n "Like the first crack in something that's been sealed too tight for too long."
-        n "There's a silence. Not the heavy kind from before, something rawer."
+    n "There's a silence. Not the heavy kind from before, something rawer."
     n "Like Fred just set down something he's been carrying with both hands, and his arms are trembling from the relief of it."
     n "Every instinct you have is telling you to fill this silence."
     n "To say something warm."
@@ -451,7 +464,7 @@ label merge_point5:
     f "I really do. But every time I start typing a message, I think about how it might come across."
     f "What if they think I'm being difficult?"
     f "What if it makes the dynamic weird for the rest of the project?"
-    f "So I just… delete it. And go back to doing everything myself."
+    f "So I just... delete it. And go back to doing everything myself."
     n "A short, self-deprecating exhale. Almost a laugh, but not quite."
     f "It's stupid, right."
     n "He says it like a statement. Like he's already decided the answer."
@@ -593,8 +606,80 @@ label good_ending:
 
 label mixed_ending:
 
+    # show fred_tired...
+
+    n "The conversation winds down. Not because anything went wrong, but because nothing quite went right either."
+    n "Fred talks a little more. Less than he could have. More than nothing."
+    f "Thanks for listening, Gary. I should probably get back."
+    g "Yeah. Sure."
+    n "He says 'thanks for listening' the way you say 'nice to meet you', polite, automatic, a script that fills the space where a real thing would go."
+    n "He means it. Sort of. But it's the kind of thanks you give when someone held the door for you. Not the kind you give when someone changed something."
+    n "Fred gathers his things. He looks the same as when you sat down, tired, a little distant. Not heavier. Not lighter. Just... unchanged."
+
+    # hide fred...
+
+    n "You wait for your phone to buzz. It doesn't."
+    n "Not the performive 'good catching up :)' that would mean he's hiding something."
+    n "Not the honest 'i don't feel better but i feel allowed to not feel better' that would mean something shifted."
+    n "Just... nothing."
+    n "And somehow that's its own kind of answer. Not bad. Not good. Just... nothing moved. The weight of things unsaid didn't get heavier tonight. But it didn't get lighter either."
+    n "It just stayed. And sometimes, staying is its own kind of failure."
+
+    # scene bg_black...
+    # MIXED ENDING BLABLABLA...
+    jump post_game_survey
+
 label bad_ending:
 
-label post_game_survey:
+    n "The conversation has been drifting. Fred has been getting shorter with his answers, more clipped, more careful. The space between his words growing wider."
+    n "You didn't notice it happening. But he did."
 
+    # show fred_hurt...
+
+    f "You know what? Forget it. It's not a big deal."
+    g "Wait, I was listening..."
+    f "It's fine, Gary. I'm fine."
+    n "He isn't. And you both know it."
+    n "But the door that briefly opened has quietly, firmly closed."
+
+    # show fred_leaving...
+
+    f "I'm just tired. I should head back."
+    n "He says it without looking at you. The same words he used at the start of the evening, except now they aren't an opening. They're an exit."
+    
+    # hide fred...
+    
+    n "You sit with the empty seat across from you. You think about what you said. Try to pinpoint where it went sideways."
+    n "You didn't mean to make him feel worse. But meaning well and doing well aren't always the same thing, and tonight, they weren't."
+    n "Ten minutes later, your phone buzzes."
+    n "Fred: 'thanks for dinner, good catching up :)'"
+    n "You stare at it."
+    n "There's nothing wrong with the message. That's the problem. It's perfectly fine. Cheerful, even. The kind of thing you'd send after a normal Thursday dinner."
+    n "But it's a performance. You can see the seams now, the way 'good catching up' erases the last hour, the way the smiley face is a door being locked from the other side."
+    n "He's not okay. And he's making sure you can't check."
+
+    # scene bg_black...
+    # BAD ENDING BLABLABLA...
+    "What would you like to do?"
+
+    menu:
+        "Start again, see what you notice this time.":
+            call reset_variables
+            jump start
+
+        "Return to main menu":
+            return
+
+label post_game_survey:
+    # On a scale of 1-5, (1 is strongly disagree, 5 is strongly agree)
+    # “I can recognise when someone is struggling even if they don’t say it.”
+    # “I feel confident responding to someone who is emotionally overwhelmed.”
+    # “It is important to listen without immediately trying to fix the problem.”
+    # “Silence can be helpful when someone is opening up.”
+
+    # Short answer questions:
+    # “Did the game change how you interpret Fred’s behaviour? How?”
+    # “Did any moment make you realise something you missed earlier?”
+    # “What did Gary do that helped Fred the most?”
+    # “Which response felt ‘right’ to you at first but turned out to be ineffective?”
     return
