@@ -619,7 +619,7 @@ label mixed_ending:
     # hide fred...
 
     n "You wait for your phone to buzz. It doesn't."
-    n "Not the performive 'good catching up :)' that would mean he's hiding something."
+    n "Not the performative 'good catching up :)' that would mean he's hiding something."
     n "Not the honest 'i don't feel better but i feel allowed to not feel better' that would mean something shifted."
     n "Just... nothing."
     n "And somehow that's its own kind of answer. Not bad. Not good. Just... nothing moved. The weight of things unsaid didn't get heavier tonight. But it didn't get lighter either."
