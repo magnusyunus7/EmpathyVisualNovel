@@ -671,15 +671,79 @@ label bad_ending:
             return
 
 label post_game_survey:
-    # On a scale of 1-5, (1 is strongly disagree, 5 is strongly agree)
-    # “I can recognise when someone is struggling even if they don’t say it.”
-    # “I feel confident responding to someone who is emotionally overwhelmed.”
-    # “It is important to listen without immediately trying to fix the problem.”
-    # “Silence can be helpful when someone is opening up.”
 
-    # Short answer questions:
-    # “Did the game change how you interpret Fred’s behaviour? How?”
-    # “Did any moment make you realise something you missed earlier?”
-    # “What did Gary do that helped Fred the most?”
-    # “Which response felt ‘right’ to you at first but turned out to be ineffective?”
+    # scene bg_black...
+
+    "Before you go, we’d like to ask a few questions."
+
+    menu:
+        "On a scale of 1–5 (1 = strongly disagree, 5 = strongly agree):\nI can recognise when someone is struggling even if they don’t say it."
+
+        "1":
+            $ q1 = 1
+        "2":
+            $ q1 = 2
+        "3":
+            $ q1 = 3
+        "4":
+            $ q1 = 4
+        "5":
+            $ q1 = 5
+
+    menu:
+        "On a scale of 1–5 (1 = strongly disagree, 5 = strongly agree):\nI feel confident responding to someone who is emotionally overwhelmed."
+
+        "1":
+            $ q2 = 1
+        "2":
+            $ q2 = 2
+        "3":
+            $ q2 = 3
+        "4":
+            $ q2 = 4
+        "5":
+            $ q2 = 5
+
+    menu:
+        "On a scale of 1–5 (1 = strongly disagree, 5 = strongly agree):\nIt is important to listen without immediately trying to fix the problem."
+
+        "1":
+            $ q3 = 1
+        "2":
+            $ q3 = 2
+        "3":
+            $ q3 = 3
+        "4":
+            $ q3 = 4
+        "5":
+            $ q3 = 5
+
+    menu:
+        "On a scale of 1–5 (1 = strongly disagree, 5 = strongly agree):\nSilence can be helpful when someone is opening up."
+
+        "1":
+            $ q4 = 1
+        "2":
+            $ q4 = 2
+        "3":
+            $ q4 = 3
+        "4":
+            $ q4 = 4
+        "5":
+            $ q4 = 5
+
+    $ ans1 = renpy.input("Did the game change how you interpret Fred’s behaviour? How?")
+    $ ans1 = ans1.strip()
+
+    $ ans2 = renpy.input("Did any moment make you realise something you missed earlier?")
+    $ ans2 = ans2.strip()
+
+    $ ans3 = renpy.input("What did Gary do that helped Fred the most?")
+    $ ans3 = ans3.strip()
+
+    $ ans4 = renpy.input("Which response felt 'right' at first but turned out ineffective?")
+    $ ans4 = ans4.strip()
+
+    "Thank you for your responses."
+
     return
