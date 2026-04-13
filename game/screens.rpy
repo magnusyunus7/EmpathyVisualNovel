@@ -372,9 +372,11 @@ screen main_menu():
 
             text "[config.name!t]":
                 style "main_menu_title"
+                color '#63eb48'
 
             text "[config.version]":
                 style "main_menu_version"
+                color '#63eb48'
 
 
 style main_menu_frame is empty

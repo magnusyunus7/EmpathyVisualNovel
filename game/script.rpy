@@ -28,21 +28,27 @@ label reset_variables:
 label start:
 
     scene bg_cafeteria with fade
+    play sound "audio/audio_soft_chatter.mp3" volume 0.2 loop
+    play music "audio/music_happy.mp3" volume 0.5 fadeout 2.0 fadein 2.0
 
     n "It's a Thursday evening at the SUTD canteen."
     n "The dinner rush has long thinned out, most people have retreated to their rooms, their deadlines, their screens."
     n "The overhead lights cast everything in a warm, slightly tired glow."
     n "Somewhere nearby, a ceiling fan hums at a speed that doesn't quite cool anything."
     
-    # show gary_neutral at left with moveinleft
+    show gary_neutral with moveinleft:
+        xalign 0.45
+        yalign 0.0
 
     n "You are Gary. Term 5 EPD student."
     n "You've been meaning to catch up with Fred for weeks, tonight was the first window either of you could find."
     n "You grab your mixed rice, half a sugarcane juice and spot Fred already at the corner table."
     n "You weave past a few lingering students and slide into the seat across from him."
 
-    # show fred_distant at right with moveinright
-    # hide gary_neutral with dissolve
+    hide gary_neutral with dissolve
+    show fred_tired with moveinright:
+        xalign 0.45
+        yalign 0.0
 
     n "He doesn't look up when you sit down."
     n "You arrange your tray. Unwrap your cutlery. Take a slow sip of your drink. Still nothing from him."
@@ -50,12 +56,20 @@ label start:
     n "You've pulled all-nighters together, complained about the same professors, split delivery fees more times than you can count."
     n "This quietness is not like him at all."
 
-    # show gary_neutral at left with moveinleft
+    show fred_tired with move:
+        xalign 0.8
+        yalign 0.0
+
+    show gary_neutral with moveinleft:
+        xalign 0.2
+        yalign 0.0
 
     g "Hey. Didn't see you in the library today."
 
-    # hide fred_distant
-    # show fred_faintsmile at right
+    hide fred_tired
+    show fred_stress:
+        xalign 0.75
+        yalign -0.3
 
     f "Yeah... sorry. I've just been... I don't know. Out of it lately."
     n "He looks back down at his plate. The food is barely touched."
@@ -64,12 +78,19 @@ label start:
     n "The fact that he's ignoring it now tells you more than anything he's said."
     n "Something is off. Not in an obvious, dramatic way, more like the quiet wrongness of a room where a window has been left open in the rain. You can't see it, but you feel the draft."
 
-    # show gary_concerned...
+    hide gary_neutral
+    show gary_concerned:
+        zoom 0.9
+        xalign 0.2
+        yalign 0.0
 
     g "Hey. You okay? You don't really seem like yourself."
     n "It's a simple question. Maybe even an obvious one. But you mean it and somehow that makes it land differently than small talk would."
 
-    # show fred_tired...
+    hide fred_stress
+    show fred_tired:
+        xalign 0.8
+        yalign 0.0
 
     f "I'm just really tired, Gary."
     n "He says it quietly. Flatly. Like the words have been sitting at the back of his throat all day and finally found their way out."
@@ -103,9 +124,6 @@ label choice_1a:
     n "Fred looks at you for a moment. Like he's checking whether you mean it."
     n "Apparently you do."
     n "Something in his shoulders shifts, barely perceptible, like a door that was held closed by one finger and the finger just let go."
-
-    # show fred_neutral...
-
     f "...It's the group project. Well, my group, specifically."
     n "He says it like he's been holding those words in his chest for days. Maybe longer."
     jump merge_point1
@@ -114,9 +132,6 @@ label choice_1b:
 
     n "Fred blinks. Something in him pulls back slightly, like a hand that reached out and found the air a little too cold."
     n "This is exactly what he said he was afraid of. You don't realise it yet. But he does."
-    
-    # show fred_distant...
-
     f "It's... okay, yeah. It's just group project stuff."
     n "He gives you the surface version. The polished, nothing-to-worry-about version. You can't quite put your finger on it, but you get the sense you moved too fast."
     jump merge_point1
@@ -127,7 +142,11 @@ label merge_point1:
     f "You know how it is with group projects here, right? Everyone's always swamped, everyone's got their own stuff going on..."
     n "He stops. Rubs the back of his neck."
 
-    # show fred_sad...
+    hide fred_tired
+    hide fred_opening_up
+    show fred_stress:
+        xalign 0.75
+        yalign -0.3
 
     f "My teammates just... aren't doing anything. Like, at all."
     f "I've been the one handling everything. The research, the slides, the writeup, the coordination, chasing everyone down."
@@ -135,14 +154,16 @@ label merge_point1:
     n "The words come out flat. Not dramatic. Just tired. Like he's past the point of frustration and arrived somewhere much quieter and worse."
     f "And the submission is in four days."
 
-    # show gary_thinking...
+    hide gary_neutral
+    hide gary_concerned
+    show gary_thinking:
+        zoom 0.9
+        xalign 0.2
+        yalign 0.0
 
     n "Four days. You feel that in your gut. You know exactly what that countdown feels like, the specific dread of a deadline sprinting toward you while the work barely moves."
     n "He's not exaggerating. You can see it on him, the dark circles, the way he's sitting like his body is already bracing for impact. Like he's been in survival mode for a while now and simply forgot to stop."
     g "Have they said anything? Like... do they even know how much you've been carrying?"
-
-    # show fred_sad
-
     f "They know. I've messaged them multiple times. They either leave me on read or say 'yeah I'll get to it' and then just... don't."
     n "He looks out toward the canteen entrance for a moment. Not at anything in particular. Just away."
     n "There's a fork in the road here, and you can feel it. One direction leads deeper into what Fred is going through. The other leads to a solution, clean, fast, and completely beside the point."
@@ -169,7 +190,11 @@ label choice_2a:
     n "It's the kind of question that sounds like caring but functions as escaping."
     n "'Have you tried...' is never really a question. It's a suggestion wearing a question mark. And Fred can tell."
 
-    # show fred_distant...
+    hide fred_opening_up
+    hide fred_stress
+    show fred_tired:
+        xalign 0.8
+        yalign 0.0
 
     f "Yeah, I've thought about it."
     n "He doesn't elaborate. The conversation narrows, like a corridor that was wide a moment ago and now has walls on both sides."
@@ -182,9 +207,6 @@ label choice_2b:
     n "A simple question. No advice attached. No hidden agenda. Just... tell me more."
     n "It's the kind of question that most people skip over, because it doesn't solve anything."
     n "But it does something else: it tells Fred that you're not bored yet. That you're willing to hear the whole thing, not just the summary."
-    
-    # show fred_sad...
-
     f "Honestly? Since the start of term. I thought it'd get better once everyone settled in, but it just... didn't."
     f "At first I thought maybe they were just busy. Midterms, whatever. But then I saw one of them post an Instagram story from East Coast at 2am on a weekday, and I just... I don't know."
     f "It's not about the free time. It's about the fact that they have it and they're choosing to spend it on everything but this."
@@ -192,6 +214,8 @@ label choice_2b:
     jump merge_point2
 
 label merge_point2:
+
+    play music "audio/music_sad.mp3" volume 0.5 fadeout 2.0 fadein 2.0
 
     f "I keep thinking maybe I'm messaging them wrong. Maybe I came across too uptight, or too naggy, or..."
     n "He stops himself mid-sentence. Shakes his head slightly."
@@ -221,8 +245,6 @@ label choice_3:
 
 label choice_3a:
 
-    # show fred_distant...
-
     f "Yeah... I mean. Sure."
     n "'Don't take it personally' sounds like comfort. It's the kind of thing people say when they want to make you feel better."
     n "But it's actually a redirect, it tells Fred that his pain isn't really about him, when the whole problem is that it IS. He's the one carrying it. He's the one who can't put it down."
@@ -233,7 +255,11 @@ label choice_3a:
 
 label choice_3b:
 
-    # show fred_opening_up...
+    hide fred_tired
+    hide fred_stress
+    show fred_opening_up:
+        xalign 0.8
+        yalign -0.1
 
     f "I don't know if it says something good about me. Mostly it just feels like I can't stop, because if I do, everything falls apart."
     g "That's not the same as not being allowed to feel how heavy it is, though."
@@ -268,18 +294,24 @@ label choice_repair:
 
 label choice_repair_a:
 
-    # show gary_concerned...
+    hide gary_neutral
+    hide gary_thinking
+    show gary_concerned:
+        zoom 0.9
+        xalign 0.2
+        yalign 0.0
 
     g "Actually, wait..."
-
-    # show fred_tired...
-
     f "...what?"
     g "That thing I just said. 'Don't take it personally.' I don't... that's not what I meant. I just..."
     n "Fred looks at you for a long moment. Something complicated moves across his face, not quite relief, not quite suspicion. More like recalibrating."
     n "Re-assessing whether you're someone who can be trusted to stay in the hard part, or whether this is another dead end."
     
-    # show fred_opening_up...
+    hide fred_stress
+    hide fred_tired
+    show fred_opening_up:
+        xalign 0.8
+        yalign -0.1
 
     f "...it's fine. I know what you meant."
     n "He doesn't sound like he's dismissing it. He sounds like he's giving you another chance. Not because you said the right thing, you didn't. You said an incomplete thing. But you came back. And that's different."
@@ -296,7 +328,11 @@ label merge_point3:
 
     n "The food on both your trays has gone lukewarm. Neither of you have noticed."
 
-    # show fred_sad...
+    hide fred_stress
+    hide fred_opening_up
+    show fred_tired:
+        xalign 0.8
+        yalign 0.0
 
     f "I think what gets me the most is that I haven't been sleeping properly in like, two weeks? Maybe more."
     f "I keep waking up at 3am and immediately thinking about what's left to do."
@@ -347,9 +383,6 @@ label choice_4a:
     n "You're trying to be supportive. And on paper, you are. 'You're being too hard on yourself' is a kind thing to say."
     n "But it's still a correction. It tells Fred his self-assessment is wrong, which means he has to argue with you about it or swallow the disagreement. Either way, the vulnerability just got harder."
     n "He asked you to stay in the hard part with him. Instead, you told him the hard part was wrong."
-
-    # show fred_distant...
-
     f "I guess. Maybe."
     jump merge_point4
 
@@ -358,9 +391,6 @@ label choice_4b:
     n "You agreed with him. You meant it as solidarity. Yes, it's unfair, you're right to feel that way."
     n "But what Fred heard was confirmation. The problem is external. Everyone else is fine. I'm the exception. There's nothing to be done about any of this."
     n "That's not comfort. That's the 3am story. And you just endorsed it."
-    
-    # show fred_sad...
-    
     f "Yeah. Exactly."
     n "He said 'exactly' like it was a door closing."
     jump merge_point4
@@ -370,11 +400,15 @@ label choice_4c:
     n "It's a risk. Every instinct tells you not to challenge someone who's already down, what if they take it as dismissal? What if it lands as 'stop feeling that way'?"
     n "But this isn't that. You're not telling him his feelings are wrong. You're asking him to check whether the voice in his head is actually his, or whether it's the version of him that's been running on empty for three weeks."
     n "It's a challenge that comes from knowing someone. Not from wanting to fix them."
-
-    # show fred_opening_up...
-
     f "...I don't know."
     n "He doesn't have an answer. But something about the question makes him pause, genuinely pause, not the performed kind, and you can see him turning the thought over like something he hasn't looked at from this angle before."
+
+    hide fred_stress
+    hide fred_tired
+    show fred_opening_up:
+        xalign 0.8
+        yalign -0.1
+
     f "Maybe both? I don't... I can't tell anymore. Which is probably not a great sign."
     n "He says it with something that's almost a laugh. Not because it's funny. But because naming the confusion out loud makes it slightly smaller."
     n "This is different from every other moment tonight. You didn't validate him. You didn't agree with him. You just asked him to look at what he was saying more carefully, and trusted that he could."
@@ -386,12 +420,13 @@ label merge_point4:
     n "You feel an urge to say something. Something helpful. Something with steps."
     n "Your fingers twitch toward your phone, maybe you could look up something, send him a link, a framework, anything that would make this feel solvable."
     n "You don't do it. But the urge is there. And sitting with that urge, not acting on it, is harder than you expected."
-    
-    # show gary_warm...
-
     g "Fred... that sounds genuinely exhausting. Not just the project. All of it. The sleep, the carrying it alone, of course you're struggling."
 
-    # show fred_sad...
+    hide fred_tired
+    hide fred_opening_up
+    show fred_stress:
+        xalign 0.75
+        yalign -0.3
 
     f "I've been telling myself it's fine for so long. Like if I just keep going, keep pushing, eventually it'll sort itself out."
     n "He exhales slowly."
@@ -432,9 +467,6 @@ label choice_5a:
     n "'It'll pass' is meant as comfort. But what Fred heard was: this isn't real. It's temporary. It's small. You'll get over it."
     n "And maybe that's true. Maybe it will pass. But that's not what he needs to hear right now."
     n "He needs to hear that what he's feeling is allowed to be big. Even if it's temporary. Especially if it's temporary."
-
-    # show fred_distant...
-
     f "...yeah. I guess."
     n "He wanted you to stay in the hard part with him. Instead, you showed him the exit. And he took it, because that's what he's been doing all along. Running from the hard part."
     n "You just made it easier."
@@ -447,7 +479,11 @@ label choice_5b:
     n "Fred looks down at his hands. Takes a slow breath. And something shifts, not a smile, not relief, just... a loosening. Like a knot that's been pulled tight for weeks and just got a quarter-turn looser."
     n "You didn't do anything. That was the point."
 
-    # show fred_opening_up...
+    hide fred_tired
+    hide fred_stress
+    show fred_opening_up:
+        xalign 0.8
+        yalign -0.1
 
     f "...thanks. For not... yeah. Thanks."
     jump merge_point5
@@ -476,7 +512,11 @@ label merge_point5:
     n "And now every time he thinks about reaching out, he hears Wei Ling's voice underneath his own. 'That sucks bro.' Then nothing."
     n "One bad experience. That's all it took to teach him that vulnerability doesn't work."
     
-    # show fred_distant...
+    hide fred_stress
+    hide fred_opening_up
+    show fred_tired:
+        xalign 0.8
+        yalign 0.0
     
     f "Actually you know what, never mind."
     f "It's not even... it's fine."
@@ -509,7 +549,11 @@ label choice_6a:
     n "There's a difference between pushing someone to open up and refusing to pretend they didn't just open up. You're doing the second one."
     n "And Fred can feel the difference."
 
-    # show fred_opening_up...
+    hide fred_stress
+    hide fred_tired
+    show fred_opening_up:
+        xalign 0.8
+        yalign -0.1
 
     f "I just hate feeling like the difficult one. Like everyone else is somehow fine and I'm the only one who has a problem."
     g "You're not the difficult one for having a limit. You're the one who cared enough to keep going when the others checked out."
@@ -525,9 +569,6 @@ label choice_6b:
     n "You let him off the hook. It feels like kindness, giving him an exit, not pushing, respecting his boundary."
     n "But Fred wasn't asking for permission to stop. He was testing whether you'd still be there if he showed you something ugly."
     n "And you said: no, put it away. I'll wait until you're presentable again."
-    
-    # show fred_distant...
-    
     f "...yeah. You're right."
     n "He agrees. And then goes quiet in that specific way that means the conversation is gently, firmly over."
     n "You said the gentle thing. But he wasn't asking for gentle. He was asking to not feel stupid for struggling, and you accidentally confirmed that he should."
@@ -544,13 +585,24 @@ label path_check:
 
 label good_ending:
 
-    # show fred_relieved...
+    play music "audio/music_good_ending.mp3" volume 0.5 fadein 2.0
 
     n "Fred sits back in his chair. Not fixed. Not solved. But somehow less braced."
+
+    hide fred_stress
+    hide fred_tired
+    show fred_opening_up:
+        xalign 0.8
+        yalign -0.1
+
     f "I think I just needed to say it out loud. I've been running all of this through my head on a loop for weeks and it just... it gets louder every time, you know?"
     f "Saying it to someone makes it feel like an actual problem instead of just this cloud I'm living inside."
 
-    # show gary_warm...
+    hide gary_thinking
+    hide gary_concerned
+    show gary_neutral:
+        xalign 0.2
+        yalign 0.0
 
     g "It is an actual problem. A hard one. But an actual, solvable one."
     f "Yeah."
@@ -559,9 +611,6 @@ label good_ending:
     f "Like... actually."
     f "I half expected you to say 'just talk to them bro' and move on."
     g "I mean... I do think you should talk to them."
-
-    # show fred_relieved
-
     f "Yeah, yeah. I know."
     n "And there it is. The real Fred, briefly. The one who laughs easily, who doesn't disappear inside his own head."
     n "Still tired. Still anxious. But present. Here. With you."
@@ -577,20 +626,15 @@ label good_ending:
     n "By the end of it, Fred has a plan. A small one, a message to draft, a meeting to propose, a line he's decided he's allowed to draw."
     n "It's not a solution. Not yet. But it's a beginning."
     n "And sometimes, that's everything."
-
-    # show fred_relieved at right
-    # show gary_warm at left
-
     n "Fred gathers his tray. He looks lighter, not fixed, not solved, but lighter. Like something has been set down, even temporarily."
     f "Seriously. Thank you."
     g "Anytime. And I mean that. Not just tonight."
-
-    # show fred_relieved...
-
     f "I know."
 
-    # hide fred...
-    # show gary_warm...
+    hide fred_opening_up with dissolve
+    show gary_neutral with move:
+        xalign 0.45
+        yalign 0.0
 
     n "You sit alone for a moment after he leaves. The canteen is almost empty now. The ceiling fan still hums, uselessly."
     n "You didn't solve his problem. You didn't give him a five-step plan or make his teammates suddenly care."
@@ -600,23 +644,36 @@ label good_ending:
     n "'hey. i don't feel better exactly. but i feel like i'm allowed to not feel better? if that makes sense. anyway thanks. see you tomorrow.'"
     n "It makes sense. It makes more sense than anything you could have told him."
 
-    # scene bg_black...
-    # GOOD ENDING BLABLABLA...
+    hide gary_neutral
+    scene good_ending with fade
+    pause
     jump post_game_survey
 
 label mixed_ending:
 
-    # show fred_tired...
+    play music "audio/music_mixed_ending.mp3" volume 0.5 fadeout 2.0 fadein 2.0
 
     n "The conversation winds down. Not because anything went wrong, but because nothing quite went right either."
     n "Fred talks a little more. Less than he could have. More than nothing."
+
+    hide fred_stress
+    hide fred_opening_up
+    show fred_tired:
+        xalign 0.8
+        yalign 0.0
+
     f "Thanks for listening, Gary. I should probably get back."
     g "Yeah. Sure."
     n "He says 'thanks for listening' the way you say 'nice to meet you', polite, automatic, a script that fills the space where a real thing would go."
     n "He means it. Sort of. But it's the kind of thanks you give when someone held the door for you. Not the kind you give when someone changed something."
     n "Fred gathers his things. He looks the same as when you sat down, tired, a little distant. Not heavier. Not lighter. Just... unchanged."
 
-    # hide fred...
+    hide fred_tired with dissolve
+    hide gary_thinking
+    hide gary_concerned
+    show gary_neutral with move:
+        xalign 0.45
+        yalign 0.0
 
     n "You wait for your phone to buzz. It doesn't."
     n "Not the performative 'good catching up :)' that would mean he's hiding something."
@@ -625,8 +682,9 @@ label mixed_ending:
     n "And somehow that's its own kind of answer. Not bad. Not good. Just... nothing moved. The weight of things unsaid didn't get heavier tonight. But it didn't get lighter either."
     n "It just stayed. And sometimes, staying is its own kind of failure."
 
-    # scene bg_black...
-    # MIXED ENDING BLABLABLA...
+    hide gary_neutral
+    scene mixed_ending with fade
+    pause
     jump post_game_survey
 
 label bad_ending:
@@ -634,20 +692,34 @@ label bad_ending:
     n "The conversation has been drifting. Fred has been getting shorter with his answers, more clipped, more careful. The space between his words growing wider."
     n "You didn't notice it happening. But he did."
 
-    # show fred_hurt...
+    hide fred_stress
+    hide fred_tired
+    hide fred_opening_up
+    show fred_stress:
+        xalign 0.75
+        yalign -0.3
 
     f "You know what? Forget it. It's not a big deal."
+
+    hide gary_neutral
+    hide gary_thinking
+    show gary_concerned:
+        zoom 0.9
+        xalign 0.2
+        yalign 0.0
+
     g "Wait, I was listening..."
     f "It's fine, Gary. I'm fine."
     n "He isn't. And you both know it."
     n "But the door that briefly opened has quietly, firmly closed."
-
-    # show fred_leaving...
-
     f "I'm just tired. I should head back."
     n "He says it without looking at you. The same words he used at the start of the evening, except now they aren't an opening. They're an exit."
     
-    # hide fred...
+    hide fred_stress with dissolve
+    show gary_concerned with move:
+        zoom 0.9
+        xalign 0.45
+        yalign 0.0
     
     n "You sit with the empty seat across from you. You think about what you said. Try to pinpoint where it went sideways."
     n "You didn't mean to make him feel worse. But meaning well and doing well aren't always the same thing, and tonight, they weren't."
@@ -658,8 +730,9 @@ label bad_ending:
     n "But it's a performance. You can see the seams now, the way 'good catching up' erases the last hour, the way the smiley face is a door being locked from the other side."
     n "He's not okay. And he's making sure you can't check."
 
-    # scene bg_black...
-    # BAD ENDING BLABLABLA...
+    hide gary_concerned
+    scene bad_ending with fade
+    pause
     "What would you like to do?"
 
     menu:
@@ -672,7 +745,9 @@ label bad_ending:
 
 label post_game_survey:
 
-    # scene bg_black...
+    stop music fadeout 2.0
+    stop sound fadeout 2.0
+    scene bg_black with fade
 
     "Before you go, we’d like to ask a few questions."
 
