@@ -1,7 +1,7 @@
 # Empathy Visual Novel
 
 A short interactive visual novel built in Ren'Py that explores empathy, active listening, and how small conversational choices affect others.
-[Download](https://github.com/magnusyunus7/EmpathyVisualNovel/releases/download/v1.1/EmpathyProject-v1.1-pc.zip)
+[Download here](https://github.com/magnusyunus7/EmpathyVisualNovel/releases/tag/v1.1)
 
 ---
 
