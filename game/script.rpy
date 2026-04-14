@@ -807,16 +807,24 @@ label post_game_survey:
         "5":
             $ q4 = 5
 
-    $ ans1 = renpy.input("Did the game change how you interpret Fred’s behaviour? How?")
+    $ ans1 = ""
+    while ans1.strip() == "":
+        $ ans1 = renpy.input("Did the game change how you interpret Fred's behaviour? How?")
     $ ans1 = ans1.strip()
 
-    $ ans2 = renpy.input("Did any moment make you realise something you missed earlier?")
+    $ ans2 = ""
+    while ans2.strip() == "":
+        $ ans2 = renpy.input("Did any moment make you realise something you missed earlier?")
     $ ans2 = ans2.strip()
 
-    $ ans3 = renpy.input("What did Gary do that helped Fred the most?")
+    $ ans3 = ""
+    while ans3.strip() == "":
+        $ ans3 = renpy.input("What did Gary do that helped Fred the most?")
     $ ans3 = ans3.strip()
 
-    $ ans4 = renpy.input("Which response felt 'right' at first but turned out ineffective?")
+    $ ans4 = ""
+    while ans4.strip() == "":
+        $ ans4 = renpy.input("Which response felt 'right' at first but turned out ineffective?")
     $ ans4 = ans4.strip()
 
     "Thank you for your responses."
